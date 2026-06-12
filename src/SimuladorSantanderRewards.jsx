@@ -326,15 +326,6 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Prévia de passos em tempo real (ajuda o cliente a entender o impacto)
-  const previa = (() => {
-    const pi = Math.min(Math.floor(form.investimentos / PASSO_POR_REAL_INVEST), CAP_INVEST);
-    const pg = Math.min(Math.floor(form.gastoCartao / PASSO_POR_REAL_GASTO), CAP_GASTO);
-    const pt = TAREFAS.filter((t) => form.tarefas[t.id]).reduce((s, t) => s + t.passos, 0);
-    const total = pi + pg + pt;
-    return { total, nivel: nivelDePassos(total) };
-  })();
-
   const gruposCheck = ["Recebimentos e rotina", "Produtos Santander"];
 
   return (
@@ -410,16 +401,6 @@ export default function App() {
               </div>
             ))}
 
-            {/* Prévia ao vivo */}
-            <div className="sr-previa">
-              <div>
-                <span className="sr-previa__num">{fmtMilhar(previa.total)}</span> passos
-              </div>
-              <div className={"sr-previa__nivel sr-previa__nivel--" + previa.nivel.nivel}>
-                Nível {previa.nivel.nivel} · {previa.nivel.rotulo}
-              </div>
-            </div>
-
             {/* Cartão desejado */}
             <label className="sr-label sr-label--sec">Qual cartão você gostaria de ter?</label>
             <div className="sr-cards">
@@ -430,7 +411,6 @@ export default function App() {
                   onClick={() => set("cartaoDesejado", c)}
                 >
                   <span className="sr-cartao__nome">{CARTOES[c].nome}</span>
-                  <span className="sr-cartao__base">{CARTOES[c].sub}</span>
                 </button>
               ))}
             </div>

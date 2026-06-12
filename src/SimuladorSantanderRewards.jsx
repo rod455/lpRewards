@@ -56,7 +56,7 @@ const TAREFAS = [
   { id: "openfinance", label: "Open Finance conectado",                   desc: "Dados de outros bancos compartilhados",   passos: 1,  grupo: "Recebimentos e rotina" },
   { id: "wallet",      label: "Cartão na carteira digital (> R$200/mês)", desc: "Apple Pay / Google Pay no crédito",       passos: 1,  grupo: "Recebimentos e rotina" },
   { id: "assinatura",  label: "Assinatura recorrente no cartão",          desc: "Streaming, academia, etc.",               passos: 1,  grupo: "Recebimentos e rotina" },
-  { id: "seguro",      label: "Tenho um seguro Santander",                desc: "Vida, Auto, Casa ou Acidentes Pessoais (vale 1)", passos: 2, grupo: "Produtos Santander" },
+  { id: "seguro",      label: "Quero transferir meu seguro para o Santander", desc: "Vida, Auto, Casa ou Acidentes Pessoais (vale 1)", passos: 2, grupo: "Produtos Santander" },
   { id: "credito",     label: "Tenho um crédito ativo no Santander",      desc: "Imobiliário, Automóvel ou Consignado/CP (vale 1)", passos: 2, grupo: "Produtos Santander" },
 ];
 

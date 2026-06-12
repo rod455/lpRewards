@@ -50,14 +50,14 @@ const NIVEIS = [
 
 // Tarefas com check (passos fixos por tarefa)
 const TAREFAS = [
-  { id: "salario",     label: "Trago meu salário para o Santander",       desc: "Recebimento ou portabilidade",            passos: 15, grupo: "Recebimentos e rotina" },
-  { id: "pix",         label: "CPF e celular como chave Pix",             desc: "As duas chaves cadastradas e ativas",     passos: 6,  grupo: "Recebimentos e rotina" },
-  { id: "debito",      label: "Contas de consumo no débito automático",   desc: "Luz, água, etc. cadastradas e efetivadas", passos: 2,  grupo: "Recebimentos e rotina" },
-  { id: "openfinance", label: "Open Finance conectado",                   desc: "Dados de outros bancos compartilhados",   passos: 1,  grupo: "Recebimentos e rotina" },
-  { id: "wallet",      label: "Cartão na carteira digital (> R$200/mês)", desc: "Apple Pay / Google Pay no crédito",       passos: 1,  grupo: "Recebimentos e rotina" },
-  { id: "assinatura",  label: "Assinatura recorrente no cartão",          desc: "Streaming, academia, etc.",               passos: 1,  grupo: "Recebimentos e rotina" },
-  { id: "seguro",      label: "Quero transferir meu seguro para o Santander", desc: "Vida, Auto, Casa ou Acidentes Pessoais (vale 1)", passos: 2, grupo: "Produtos Santander" },
-  { id: "credito",     label: "Tenho um crédito ativo no Santander",      desc: "Imobiliário, Automóvel ou Consignado/CP (vale 1)", passos: 2, grupo: "Produtos Santander" },
+  { id: "salario",     label: "Trazer meu salário para o Santander",        desc: "Recebimento ou portabilidade",            passos: 15, grupo: "Recebimentos e rotina" },
+  { id: "pix",         label: "Cadastrar CPF e celular como chave Pix",     desc: "As duas chaves cadastradas e ativas",     passos: 6,  grupo: "Recebimentos e rotina" },
+  { id: "debito",      label: "Pagar contas no débito automático",          desc: "Luz, água, etc. cadastradas e efetivadas", passos: 2,  grupo: "Recebimentos e rotina" },
+  { id: "openfinance", label: "Conectar o Open Finance",                    desc: "Dados de outros bancos compartilhados",   passos: 1,  grupo: "Recebimentos e rotina" },
+  { id: "wallet",      label: "Usar o cartão na carteira digital (> R$200/mês)", desc: "Apple Pay / Google Pay no crédito",  passos: 1,  grupo: "Recebimentos e rotina" },
+  { id: "assinatura",  label: "Colocar uma assinatura recorrente no cartão", desc: "Streaming, academia, etc.",              passos: 1,  grupo: "Recebimentos e rotina" },
+  { id: "seguro",      label: "Transferir meu seguro para o Santander",     desc: "Vida, Auto, Casa ou Acidentes Pessoais (vale 1)", passos: 2, grupo: "Produtos Santander" },
+  { id: "credito",     label: "Transferir meu crédito para o Santander",    desc: "Imobiliário, Automóvel ou Consignado/CP (vale 1)", passos: 2, grupo: "Produtos Santander" },
 ];
 
 const PASSO_POR_REAL_INVEST = 10000; // 1 passo a cada R$10.000 investidos
@@ -379,7 +379,7 @@ export default function App() {
                 <CampoMoeda valor={form.investimentos} onChange={(v) => set("investimentos", v)} placeholder="0" destaque />
               </div>
               <div className={"sr-field " + (erros.gastoCartao ? "sr-field--erro" : "")}>
-                <label className="sr-label">Quanto você gasta no cartão por mês?</label>
+                <label className="sr-label">Quanto você gasta por mês?</label>
                 <span className="sr-hint">1 passo a cada R$250 (até 200)</span>
                 <CampoMoeda valor={form.gastoCartao} onChange={(v) => set("gastoCartao", v)} placeholder="0" destaque />
                 {erros.gastoCartao && <span className="sr-erro">{erros.gastoCartao}</span>}
@@ -387,7 +387,7 @@ export default function App() {
             </div>
 
             {/* Outras tarefas */}
-            <label className="sr-label sr-label--sec">O que mais você faz (ou pode fazer) no Santander?</label>
+            <label className="sr-label sr-label--sec">Como você quer se relacionar com o Santander?</label>
             {gruposCheck.map((g) => (
               <div key={g} className="sr-grupo">
                 <div className="sr-grupo__nome">{g}</div>
@@ -517,6 +517,7 @@ function Estilos() {
     .sr-grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
     @media(max-width:480px){.sr-grid2{grid-template-columns:1fr;}}
     .sr-field{margin-bottom:6px;}
+    @media(min-width:481px){.sr-grid2 .sr-label{min-height:19px;}}
 
     /* Campo de moeda */
     .sr-money{display:flex; align-items:center; border:1.5px solid var(--line);
